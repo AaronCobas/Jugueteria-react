@@ -1,6 +1,10 @@
 import ItemCount from "../components/ItemCount";
 import React, { useEffect, useState } from "react";
-const ItemListContainer = (props) => {
+import Juguete from "../components/Juguete";
+import dataFromDB from "../utils/data";
+import customFecth from "../utils/customFetch";
+const ItemListContainer = () => {
+    const [data, setData] = useState([])
     const [items, setItems] = useState(1)
     const handleAdd =() =>{
         if (items < 5) {
@@ -20,20 +24,32 @@ const ItemListContainer = (props) => {
         alert(`Se agregaron ${items} objetos a tu carrito`)
     }
         useEffect(() => {
-            fetch("https://api.mercadolibre.com/sites/MLA/search?q=juguetes")
-            .then(response => response.json())
-            .then(response => console.log(response.results))
+            customFecth(2000, dataFromDB)
+            .then(result => setData(result))
             .catch(err => console.log(err))
             }, []);
     return(
         <>
-        <p>Mensaje de {props.test}</p>
         <div>
             <ItemCount 
             handleAdd={handleAdd}
             handleRest={handleRest}
             items={items}
             handleAddCart={handleAddCart}> </ItemCount>
+        </div>
+        <div>
+            {
+                data.map(item => (
+                    <Juguete
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        image={item.image}
+                        description={item.description}
+                        stock={item.stock}
+                    />
+                ))
+            }
         </div>
         </>
     )

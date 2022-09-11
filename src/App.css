@@ -1,6 +1,7 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
+
 .headerNavbar{
   display: flex;
   flex-direction: row;
@@ -25,4 +26,10 @@ a{
 }
 .addRestButtons{
   padding: 10px;
+}
+.juguetesCard{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
 }
