@@ -37,7 +37,7 @@ const ItemListContainer = () => {
             items={items}
             handleAddCart={handleAddCart}> </ItemCount>
         </div>
-        <div>
+        <div className="juguetesCard">
             {
                 data.map(item => (
                     <Juguete
