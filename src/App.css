@@ -33,3 +33,39 @@ a{
   gap: 2rem;
   margin: 4rem;
 }
+.carga{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#itemDetail_title{
+  grid-area: titulo;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#itemDetail_image{
+  grid-area: imagen;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#itemDetail_description{
+  grid-area: descripcion;
+}
+#itemDetail_itemcount{
+  grid-area: itemCount;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.itemDetail{
+  display: grid;
+  grid-template-areas:
+  "titulo titulo"
+  "imagen descripcion"
+  "imagen itemCount";
+}

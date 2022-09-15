@@ -4,7 +4,8 @@ import { CardContent } from "@mui/material"
 import { Typography } from "@mui/material"
 import { CardActions } from "@mui/material"
 import { Button } from "@mui/material"
-const Juguete = ({id, title, image, description, stock}) => {
+import { Link } from "react-router-dom"
+const Juguete = ({id, title, image, description, stock, price}) => {
     return(
         <>
         <Card sx={{ maxWidth: 445 }}>
@@ -26,11 +27,15 @@ const Juguete = ({id, title, image, description, stock}) => {
         <Typography variant="body2" color="text.secondary">
             Id: {id}
         </Typography>
+        <Typography variant="body2" color="text.primary">
+            Precio: ${price}
+        </Typography>
     </CardContent>
     <CardActions>
+        <Link to={`/item/${id}`}>
         <Button size="small">
             Más Información.
-        </Button>
+        </Button></Link>
     </CardActions>
     </Card>
     </>

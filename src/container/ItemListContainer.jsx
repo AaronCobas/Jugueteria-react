@@ -1,44 +1,33 @@
-import ItemCount from "../components/ItemCount";
 import React, { useEffect, useState } from "react";
 import Juguete from "../components/Juguete";
 import dataFromDB from "../utils/data";
 import customFecth from "../utils/customFetch";
+import { CircularProgress } from "@mui/material"
+import { useParams } from "react-router-dom"
 const ItemListContainer = () => {
     const [data, setData] = useState([])
-    const [items, setItems] = useState(1)
-    const handleAdd =() =>{
-        if (items < 5) {
-            setItems(items+1);
-        } else {
-            console.log("error")
-        }
-    }
-    const handleRest = () => {
-        if (items > 0) {
-            setItems(items-1);
-        } else {
-            console.log("error2")
-        }
-    }
-    const handleAddCart = () => {
-        alert(`Se agregaron ${items} objetos a tu carrito`)
-    }
+    const [loading, setLoading] = useState(true)
+    const { id } = useParams();
         useEffect(() => {
-            customFecth(2000, dataFromDB)
-            .then(result => setData(result))
-            .catch(err => console.log(err))
-            }, []);
+            if (id) {
+                setLoading(true)
+                customFecth(2000, dataFromDB.filter(item => item.categoryId == id))
+                .then(result => setData(result))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            } else {
+                setLoading(true)
+                customFecth(2000, dataFromDB)
+                .then(result => setData(result))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            }
+            }, [id]);
     return(
         <>
-        <div>
-            <ItemCount 
-            handleAdd={handleAdd}
-            handleRest={handleRest}
-            items={items}
-            handleAddCart={handleAddCart}> </ItemCount>
-        </div>
         <div className="juguetesCard">
             {
+                loading ? <CircularProgress className="carga" /> :
                 data.map(item => (
                     <Juguete
                         key={item.id}
@@ -47,6 +36,7 @@ const ItemListContainer = () => {
                         image={item.image}
                         description={item.description}
                         stock={item.stock}
+                        price={item.price}
                     />
                 ))
             }

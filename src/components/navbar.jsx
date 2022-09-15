@@ -1,19 +1,22 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from "react-router-dom"
 const Navbar = () => {
     return(
         <>
         <header className="headerNavbar">
+            <Link to="/">
             <h1>Juguetería</h1>
+            </Link>
                 <nav className="nav">
             <ul>
                 <li>
-                    <a href="">Home</a>
+                <Link to="/category/1">Niños</Link>
                 </li>
                 <li>
-                <a href="">Productos</a>
+                <Link to="/category/2">Niñas</Link>
                 </li>
                 <li>
-                <a href="">Mis compras</a>
+                <Link to="/category/3">Bebés</Link>
                 </li>
             </ul>
         </nav>

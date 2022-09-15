@@ -1,5 +1,24 @@
 import { Button } from "@mui/material"
-const ItemCount = ({handleAdd, handleRest, items, handleAddCart}) => {
+import React, {  useState } from "react";
+const ItemCount = () => {
+    const [items, setItems] = useState(1)
+    const handleAddCart = () => {
+        alert(`Se agregaron ${items} objetos a tu carrito`)
+    }
+    const handleAdd =() =>{
+        if (items < 5) {
+            setItems(items+1);
+        } else {
+            console.log("error")
+        }
+    }
+    const handleRest = () => {
+        if (items > 0) {
+            setItems(items-1);
+        } else {
+            console.log("error2")
+        }
+    }
     return(
         <div className="item-count">
             <p>{items} items</p>
