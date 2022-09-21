@@ -1,12 +1,15 @@
 import ItemCount from "./ItemCount"
 import { Link} from "react-router-dom"
-import React, {  useState } from "react"
+import React, {  useState, useContext } from "react"
 import { Button } from "@mui/material"
+import { CartContext } from "./CartContext"
 const ItemDetail = ({ item }) => {
+    const { addItem } = useContext(CartContext)
     const [items, setItems] = useState(0)
-    const handleAddCart = (items) => {
-        alert(`Se agregaron ${items} objetos a tu carrito`);
-        setItems(items);
+    const handleAddCart = (count) => {
+        alert(`Se agregaron ${count} objetos a tu carrito`);
+        setItems(count);
+        addItem(item, count);
     }
     return(
         <div className="itemDetail">
