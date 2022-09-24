@@ -10,6 +10,12 @@ const CartContextProvider = ({children}) => {
         setCartList([...cartList, {item, count}])
         }
     }
+    const totalProductsPrice = () => {
+        return cartList.reduce((acc, itemCart) => acc + (itemCart.item.price * itemCart.count), 0)
+    }
+    const itemAmount = () => {
+        return cartList.reduce((acumulador, productoActual) => acumulador + productoActual.count, 0);
+    }
     const clear = () => {
         setCartList([])
     }
@@ -26,6 +32,8 @@ const CartContextProvider = ({children}) => {
             clear,
             isInCart,
             removeProduct,
+            itemAmount,
+            totalProductsPrice,
             }}>
             {children}
         </CartContext.Provider>

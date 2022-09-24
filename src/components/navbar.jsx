@@ -1,5 +1,5 @@
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom"
+import CartWidget from './CartWidget';
 const Navbar = () => {
     return(
         <>
@@ -20,7 +20,7 @@ const Navbar = () => {
                 </li>
             </ul>
         </nav>
-        <Link to="/cart"><ShoppingCartIcon></ShoppingCartIcon></Link>
+        <Link to="/cart"><CartWidget></CartWidget></Link>
         </header>
         </>
     )

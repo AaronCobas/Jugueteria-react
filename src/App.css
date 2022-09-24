@@ -1,7 +1,9 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
-
+body{
+  background-color: #708090;
+}
 .headerNavbar{
   display: flex;
   flex-direction: row;
@@ -29,6 +31,8 @@ a{
 }
 .juguetesCard{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   margin: 4rem;
@@ -83,4 +87,20 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.checkout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.emptyCart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  background-color: #708090;
 }

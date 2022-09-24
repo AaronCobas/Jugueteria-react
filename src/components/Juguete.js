@@ -14,7 +14,7 @@ const Juguete = ({id, title, image, description, stock, price}) => {
         height="500"
         image={image}
     />
-    <CardContent>
+    <CardContent className="card">
         <Typography gutterBottom variant="h5" component="div">
         {title}
         </Typography>
@@ -31,9 +31,9 @@ const Juguete = ({id, title, image, description, stock, price}) => {
             Precio: ${price}
         </Typography>
     </CardContent>
-    <CardActions>
+    <CardActions className="card">
         <Link to={`/item/${id}`}>
-        <Button size="small">
+        <Button variant="contained" size="small">
             Más Información.
         </Button></Link>
     </CardActions>
