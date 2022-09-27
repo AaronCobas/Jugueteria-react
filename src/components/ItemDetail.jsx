@@ -3,11 +3,21 @@ import { Link} from "react-router-dom"
 import React, {  useState, useContext } from "react"
 import { Button } from "@mui/material"
 import { CartContext } from "./CartContext"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ItemDetail = ({ item }) => {
     const { addItem } = useContext(CartContext)
     const [items, setItems] = useState(0)
     const handleAddCart = (count) => {
-        alert(`Se agregaron ${count} objetos a tu carrito`);
+        toast(`Agregaste ${count} objeto/s a tu carrito`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         setItems(count);
         addItem(item, count);
     }

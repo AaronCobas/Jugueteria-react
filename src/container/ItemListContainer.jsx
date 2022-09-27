@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Juguete from "../components/Juguete";
-import dataFromDB from "../utils/data";
-import customFecth from "../utils/customFetch";
 import { CircularProgress } from "@mui/material"
 import { useParams } from "react-router-dom"
+import{ collection, getDocs } from "firebase/firestore"
+import { db } from "../utils/firebaseConfig"
 const ItemListContainer = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const { id } = useParams();
         useEffect(() => {
+            const firestoreFetch = async () => {
+                const querySnapshot = await getDocs(collection(db, "products"));
+                const dataFromFS = querySnapshot.docs.map(document => ({
+                    id: document.id,
+                    ...document.data()
+                }))
+                return dataFromFS
+            }
             if (id) {
                 setLoading(true)
-                customFecth(2000, dataFromDB.filter(item => item.categoryId == id))
-                .then(result => setData(result))
+                firestoreFetch()
+                .then(result => setData(result.filter(item => item.categoryId == id)))
                 .catch(err => console.log(err))
                 .finally(() => setLoading(false))
             } else {
                 setLoading(true)
-                customFecth(2000, dataFromDB)
+                firestoreFetch()
                 .then(result => setData(result))
                 .catch(err => console.log(err))
                 .finally(() => setLoading(false))
             }
-            }, [id]);
+        }, [id]);
     return(
         <>
         <div className="juguetesCard">

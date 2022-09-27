@@ -48,6 +48,7 @@ a{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 4vh;
 }
 #itemDetail_image{
   grid-area: imagen;
@@ -55,6 +56,7 @@ a{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-right: 4vh
 }
 #itemDetail_description{
   grid-area: descripcion;
