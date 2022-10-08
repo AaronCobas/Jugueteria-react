@@ -54,9 +54,9 @@ const Cart = () =>{
         {
             cartList.map((item) => 
             <div className="singleItem" key={item.item.id}>
-                <h2>{item.item.title}</h2>
                 <img src={item.item.image} className="imgCart" alt="" />
-                <p>Cantidad: {item.count}</p>
+                <h2 className="titleCart">{item.item.title}</h2>
+                <p className="contador">Cantidad: {item.count}</p>
                 <h2>${item.item.price * item.count}</h2>
                 <Button onClick={() => removeProduct(item.item.id)} variant= "contained" color="error" size="small"><DeleteIcon /></Button>
             </div>)

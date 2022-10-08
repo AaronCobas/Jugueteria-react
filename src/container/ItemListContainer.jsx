@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Juguete from "../components/Juguete";
 import { CircularProgress } from "@mui/material"
 import { useParams } from "react-router-dom"
-import{ collection, getDocs } from "firebase/firestore"
+import{ collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../utils/firebaseConfig"
 const ItemListContainer = () => {
     const [data, setData] = useState([])

@@ -75,14 +75,25 @@ a{
   "imagen descripcion"
   "imagen itemCount";
 }
+.titleCart{
+
+}
 .imgCart{
-  width: 100px;
-  height: 100px;
+  width: 5%;
 }
 .singleItem{
+  margin: 10px;
+  width: 90%;
+  height: 30%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+.contador{
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .title{
